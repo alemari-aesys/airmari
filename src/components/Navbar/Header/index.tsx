@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
-import logo from "../../assets/logo.png";
+import logo from "../../../assets/logo.png";
 
 export default function Header() {
     const Header = styled.div`
@@ -67,7 +67,7 @@ export default function Header() {
             <Vl />
             <ListItem>Aiuto</ListItem>
             <Vl />
-            <ListItem>ITALIA</ListItem>
+            <ListItem>LINGUA</ListItem>
           </UnorderedList>
         </Nav>
       </Header>
