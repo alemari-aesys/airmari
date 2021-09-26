@@ -1,0 +1,51 @@
+import React, { useState } from 'react'
+import styled from 'styled-components';
+
+
+export default function RadiosContainer() {
+
+    const [travelType, setTravelType] = useState<string>("");
+
+
+    const RadiosContainer = styled.div`
+        display: flex;
+        color: white;
+        margin: 30px 40px;
+    `;
+
+    const MyRadio = styled.input`
+        width: 1rem;
+        height: 1rem;
+        margin: 0 15px;
+    `;
+
+    const Title = styled.div`
+        display: inline-block;
+        white-space: nowrap;
+        margin-right: 15px;
+        font-size: 13px;
+    `;
+
+    const Promo = styled(Title)`
+        cursor: pointer;
+    `;
+
+    const handleChangeEvent = (e:React.ChangeEvent<HTMLInputElement>) => {
+        const v = e.target.value;
+        setTravelType(v)
+    }
+
+
+
+    return (
+        <RadiosContainer>
+        <MyRadio type="radio" name="oneortwo" checked={travelType === "oneWayTrip"} onChange={(e1: React.ChangeEvent<HTMLInputElement>) => (handleChangeEvent(e1))} value={"oneWayTrip"} />
+            <Title>Andata e ritorno</Title>
+                <MyRadio type="radio" name="oneortwo" checked={travelType === "roundTrip"} onChange={(e2: React.ChangeEvent<HTMLInputElement>) => (handleChangeEvent(e2))} value={"roundTrip"}/>
+                   <Title>Sola andata</Title>
+                <span className="material-icons" style={{cursor: "pointer", fontSize: "16px", paddingRight: "5px"}}>verified_user</span>
+            <Promo>Applica codice di promozione</Promo>
+        </RadiosContainer>
+
+    )
+}
