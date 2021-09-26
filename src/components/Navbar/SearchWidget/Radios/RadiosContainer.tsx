@@ -35,8 +35,6 @@ export default function RadiosContainer() {
         setTravelType(v)
     }
 
-
-
     return (
         <RadiosContainer>
         <MyRadio type="radio" name="oneortwo" checked={travelType === "oneWayTrip"} onChange={(e1: React.ChangeEvent<HTMLInputElement>) => (handleChangeEvent(e1))} value={"oneWayTrip"} />

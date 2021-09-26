@@ -17,7 +17,7 @@ export default function SearchWidget() {
     `;
 
 
-    const Select = styled.input`
+    const Select = styled.select`
 
     `;
 
@@ -26,6 +26,20 @@ export default function SearchWidget() {
             <SearchWidget>
                 <Buttons />
                 <RadiosContainer />
+                <p style={{color: "white"}}>DA:</p>
+                <Select name="Da">
+                    <option value="Roma">Roma</option>
+                    <option value="Milano">Milano</option>
+                    <option value="Firenze">Firenze</option>
+                    <option value="Bologna">Bologna</option>
+                </Select>
+                <p style={{color: "white"}}>A:</p>
+                <Select name="A">
+                    <option value="Roma">Roma</option>
+                    <option value="Milano">Milano</option>
+                    <option value="Firenze">Firenze</option>
+                    <option value="Bologna">Bologna</option>
+                </Select>
             </SearchWidget>
         </div>
     )
