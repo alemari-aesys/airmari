@@ -1,4 +1,5 @@
 import React from 'react'
+import { Interface } from 'readline';
 import styled from "styled-components";
 import logo from "../../../assets/logo.png";
 
@@ -18,6 +19,7 @@ export default function Header() {
     width: 157px;
     height: 32px;
     margin: 10px 0;
+    cursor: pointer;
   `;
 
   const Nav = styled.nav`
@@ -52,6 +54,13 @@ export default function Header() {
   background-color: #073590;
   `;
 
+  // interface myButton {     //esempio di typescript
+  //   cazzo: string;
+  //   dio: string;
+  // }
+
+  // const Button: React.FC<myButton> = (props) => <button {...props} style={{color: props.cazzo}} children={props.children?.toString().toUpperCase()} />
+
     return (
         <Header>
         <Logo src={logo} />
@@ -68,6 +77,7 @@ export default function Header() {
             <ListItem>Aiuto</ListItem>
             <Vl />
             <ListItem>LINGUA</ListItem>
+            {/* <Button cazzo="red" dio="dioporco">porcodio</Button> */}
           </UnorderedList>
         </Nav>
       </Header>
