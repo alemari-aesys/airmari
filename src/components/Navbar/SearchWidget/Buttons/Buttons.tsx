@@ -9,8 +9,14 @@ const Option = styled.div`
   align-items: center;
   cursor: pointer;
   box-sizing: border-box;
-
+  text-decoration: none;
   &:hover {
+    /* border-bottom: 2px solid orange; */
+    margin: 0 2.5rem 0 1.875rem;
+    font-weight: bold;
+  }
+
+  &:target {
     border-bottom: 2px solid orange;
     margin: -2px 40px -2px 30px;
   }
@@ -32,21 +38,21 @@ const Title = styled.div`
 export default function Buttons() {
   return (
     <ButtonsContainer>
-      <Option>
+      <Option as="a" href="#/" id="/">
         <span style={{ transform: "rotate(45deg)" }} className="material-icons">
           flight
         </span>
         <Title>VOLI</Title>
       </Option>
-      <Option>
+      <Option as="a" href="#/car_rent" id="/car_rent">
         <span className="material-icons">directions_car</span>
         <Title>AUTONOLEGGIO</Title>
       </Option>
-      <Option>
+      <Option as="a" href="#/hotel" id="/hotel">
         <span className="material-icons">hotel</span>
         <Title>HOTEL</Title>
       </Option>
-      <Option>
+      <Option as="a" href="#/events" id="/events">
         <span className="material-icons">photo_camera</span>
         <Title>EVENTI E ATTIVITA'</Title>
       </Option>
