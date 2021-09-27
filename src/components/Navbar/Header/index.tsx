@@ -1,10 +1,10 @@
-import React from 'react'
-import { Interface } from 'readline';
+import React from "react";
+import { Interface } from "readline";
 import styled from "styled-components";
 import logo from "../../../assets/logo.png";
 
 export default function Header() {
-    const Header = styled.div`
+  const Header = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -41,17 +41,11 @@ export default function Header() {
     margin: 0 20px;
     cursor: pointer;
   `;
- 
-  const Vl = styled.div`
-  width: 0.5px;
-  height: 1rem;
-  background-color: white;
-  `;
 
-  const SearchWidget = styled.div`
-  height: 200px;
-  display: flex;
-  background-color: #073590;
+  const Vl = styled.div`
+    width: 0.5px;
+    height: 1rem;
+    background-color: white;
   `;
 
   // interface myButton {     //esempio di typescript
@@ -61,25 +55,26 @@ export default function Header() {
 
   // const Button: React.FC<myButton> = (props) => <button {...props} style={{color: props.cazzo}} children={props.children?.toString().toUpperCase()} />
 
-    return (
-        <Header>
-        <Logo src={logo} />
-        <Nav>
-          <UnorderedList >
-            <ListItem>Pianifica</ListItem>
-            <Vl />
-            <ListItem>Le mie prenotazioni</ListItem>
-            <Vl />
-            <ListItem>Iscriviti</ListItem>
-            <Vl />
-            <ListItem>Accedi</ListItem>
-            <Vl />
-            <ListItem>Aiuto</ListItem>
-            <Vl />
-            <ListItem>LINGUA</ListItem>
-            {/* <Button cazzo="red" dio="dioporco">porcodio</Button> */}
-          </UnorderedList>
-        </Nav>
-      </Header>
-    )
+  return (
+    <Header>
+      <Logo src={logo} />
+      <Nav>
+        <UnorderedList>
+          <ListItem>Pianifica</ListItem>
+          <Vl />
+          <ListItem>Le mie prenotazioni</ListItem>
+          <Vl />
+          <ListItem>Iscriviti</ListItem>
+          <Vl />
+          <ListItem>Accedi</ListItem>
+          <Vl />
+          <ListItem>Aiuto</ListItem>
+          <Vl />
+          <ListItem>LINGUA</ListItem>
+          {/* <Button cazzo="red" dio="dioporco">porcodio</Button> */}
+        </UnorderedList>
+      </Nav>
+      {/* <div className="diocane">Cazzo</div> */}
+    </Header>
+  );
 }

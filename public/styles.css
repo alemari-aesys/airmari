@@ -6,3 +6,9 @@
     font-size: 0.99rem;
     /* font-weight: bold; */
 }
+
+/* @media all and (max-width: 900px) {
+    .diocane {
+        background-color: red;
+    }
+} */
