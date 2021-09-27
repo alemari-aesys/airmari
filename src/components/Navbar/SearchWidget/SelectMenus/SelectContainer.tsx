@@ -21,6 +21,22 @@ export default function SelectContainer() {
     width: 100%;
   `;
 
+  const Button = styled.button`
+    margin-left: 10px;
+    background-color: greenyellow;
+    border-radius: 8px;
+    font-weight: bold;
+    width: 200px;
+    border: 0px;
+    cursor: pointer;
+    &:hover {
+      background-color: rgba(0, 256, 0);
+    }
+    &:active {
+      background-color: rgba(0, 256, 0, 0.7);
+    }
+  `;
+
   return (
     <SelectContainer>
       <SelectFrom name="Da">
@@ -41,6 +57,7 @@ export default function SelectContainer() {
         <option value="Firenze">Firenze</option>
         <option value="Bologna">Bologna</option>
       </SelectTo>
+      <Button>Cerca</Button>
     </SelectContainer>
   );
 }

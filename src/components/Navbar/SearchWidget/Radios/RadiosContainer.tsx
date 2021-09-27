@@ -38,23 +38,35 @@ export default function RadiosContainer() {
       <MyRadio
         type="radio"
         name="oneortwo"
-        checked={travelType === "oneWayTrip"}
+        checked={travelType === "roundTrip"}
         onChange={(e1: React.ChangeEvent<HTMLInputElement>) =>
           handleChangeEvent(e1)
         }
-        value={"oneWayTrip"}
+        value={"roundTrip"}
       />
-      <Title>Andata e ritorno</Title>
+      <Title
+        onClick={() => {
+          setTravelType("roundTrip");
+        }}
+      >
+        Andata e ritorno
+      </Title>
       <MyRadio
         type="radio"
         name="oneortwo"
-        checked={travelType === "roundTrip"}
+        checked={travelType === "oneWayTrip"}
         onChange={(e2: React.ChangeEvent<HTMLInputElement>) =>
           handleChangeEvent(e2)
         }
-        value={"roundTrip"}
+        value={"oneWayTrip"}
       />
-      <Title>Sola andata</Title>
+      <Title
+        onClick={() => {
+          setTravelType("oneWayTrip");
+        }}
+      >
+        Sola andata
+      </Title>
       <span
         className="material-icons"
         style={{ cursor: "pointer", fontSize: "16px", paddingRight: "5px" }}
