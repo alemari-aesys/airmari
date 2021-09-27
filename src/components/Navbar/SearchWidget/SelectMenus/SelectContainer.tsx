@@ -3,13 +3,13 @@ import styled from "styled-components";
 
 export default function SelectContainer() {
   const SelectFrom = styled.select`
-    width: 500px;
+    width: 400px;
     height: 3rem;
     border-radius: 8px 0 0 8px;
   `;
 
   const SelectTo = styled.select`
-    width: 500px;
+    width: 400px;
     height: 3rem;
     border-radius: 0 8px 8px 0;
   `;
@@ -26,7 +26,7 @@ export default function SelectContainer() {
     background-color: greenyellow;
     border-radius: 8px;
     font-weight: bold;
-    width: 200px;
+    width: 100px;
     border: 0px;
     cursor: pointer;
     &:hover {
