@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import Buttons from "./Buttons/Buttons";
-import RadiosContainer from "./Radios/RadiosContainer";
-import SelectContainer from "./SelectMenus/SelectContainer";
+import ButtonsWithTabs from "../../TabsTest/ButtonsWithTabs";
 
 export default function SearchWidget() {
   const SearchWidget = styled.div`
@@ -10,17 +8,20 @@ export default function SearchWidget() {
     background-color: #073590;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     padding-top: 20px;
   `;
 
   return (
     <div>
-      <SearchWidget>
+      {/* <SearchWidget>
         <Buttons />
         <RadiosContainer />
         <SelectContainer />
+      </SearchWidget> */}
+      <SearchWidget>
+        <ButtonsWithTabs />
       </SearchWidget>
     </div>
   );

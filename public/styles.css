@@ -12,3 +12,33 @@
         background-color: red;
     }
 } */
+
+.myTabList {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+}
+
+.myTabList li {
+    /* color: white; */
+    margin: 0 40px 0 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.ciao.react-tabs__tab--selected {
+    border-bottom: 2px solid orange;
+    margin-bottom: -2px;
+  }
+
+span.material-icons {
+    color: white;
+}
+
+p {
+    color: white;
+}
