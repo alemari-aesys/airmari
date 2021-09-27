@@ -11,8 +11,7 @@ const Option = styled.div`
   box-sizing: border-box;
   text-decoration: none;
   &:hover {
-    /* border-bottom: 2px solid orange; */
-    margin: 0 2.5rem 0 1.875rem;
+    margin: 0 2.52rem 0 1.875rem; //margin: 0px 40px 0px 30px;
     font-weight: bold;
   }
 
@@ -38,21 +37,21 @@ const Title = styled.div`
 export default function Buttons() {
   return (
     <ButtonsContainer>
-      <Option as="a" href="#/" id="/">
+      <Option as="a" href="#home" id="home">
         <span style={{ transform: "rotate(45deg)" }} className="material-icons">
           flight
         </span>
         <Title>VOLI</Title>
       </Option>
-      <Option as="a" href="#/car_rent" id="/car_rent">
+      <Option as="a" href="#car_rent" id="car_rent">
         <span className="material-icons">directions_car</span>
         <Title>AUTONOLEGGIO</Title>
       </Option>
-      <Option as="a" href="#/hotel" id="/hotel">
+      <Option as="a" href="#hotel" id="hotel">
         <span className="material-icons">hotel</span>
         <Title>HOTEL</Title>
       </Option>
-      <Option as="a" href="#/events" id="/events">
+      <Option as="a" href="#events" id="events">
         <span className="material-icons">photo_camera</span>
         <Title>EVENTI E ATTIVITA'</Title>
       </Option>
