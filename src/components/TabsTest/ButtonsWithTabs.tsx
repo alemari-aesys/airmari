@@ -5,19 +5,35 @@ import axios, { AxiosRequestConfig } from "axios";
 import { Tabs, TabList, Tab, TabPanel } from "react-tabs";
 import styled from "styled-components";
 import RadiosContainer from "../Navbar/SearchWidget/Radios/RadiosContainer";
-import SelectContainer from "../Navbar/SearchWidget/SelectMenus/SelectContainer";
+import SelectWrapper from "../Navbar/SearchWidget/SelectMenus/SelectContainer";
+
+const Title = styled.div`
+  display: inline-block;
+  margin-left: 5px;
+  color: white;
+
+  &:hover {
+    font-weight: bold;
+  }
+`;
+
+const Button = styled.button`
+  background-color: greenyellow;
+  border-radius: 8px;
+  font-weight: bold;
+  width: 282px;
+  height: 52px;
+  border: 0px;
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(0, 256, 0);
+  }
+  &:active {
+    background-color: rgba(0, 256, 0, 0.7);
+  }
+`;
 
 export default function ButtonsWithTabs() {
-  const Title = styled.div`
-    display: inline-block;
-    margin-left: 5px;
-    color: white;
-
-    &:hover {
-      font-weight: bold;
-    }
-  `;
-
   const [iataDeparture, setIataDeparture] = useState<string>("");
   const [iataArrival, setIataArrival] = useState<string>("");
   // const [day, setDay] = useState<string>("");
@@ -52,7 +68,7 @@ export default function ButtonsWithTabs() {
     console.log(vanillaDate);
   }, [vanillaDate]);
 
-  function handleSearch() {
+  async function handleSearch() {
     let cityFrom = document.getElementById("from") as HTMLSelectElement;
     let opt0 = cityFrom.options[cityFrom.selectedIndex];
     setIataDeparture(opt0.value);
@@ -65,28 +81,22 @@ export default function ButtonsWithTabs() {
     let month = startDate.getMonth() + 1;
     let year = startDate.getFullYear();
     let myDate = year + "-";
-    month < 10 ? (myDate += "0" + month) : (myDate += month);
+    // myDate += month < 10 ? "0" + month : month;
+    if (month < 10) {
+      myDate += "0" + month;
+    } else {
+      myDate += month;
+    }
     myDate += "-";
-    myDate += day;
+    if (day < 10) {
+      myDate += "0" + day;
+    } else {
+      myDate += day;
+    }
+    console.log(myDate);
     setVanillaDate(myDate);
     getData();
   }
-
-  const Button = styled.button`
-    background-color: greenyellow;
-    border-radius: 8px;
-    font-weight: bold;
-    width: 282px;
-    height: 52px;
-    border: 0px;
-    cursor: pointer;
-    &:hover {
-      background-color: rgba(0, 256, 0);
-    }
-    &:active {
-      background-color: rgba(0, 256, 0, 0.7);
-    }
-  `;
 
   return (
     <Tabs>
@@ -116,7 +126,7 @@ export default function ButtonsWithTabs() {
 
       <TabPanel>
         <RadiosContainer />
-        <SelectContainer />
+        <SelectWrapper />
         <DatePicker
           selected={startDate}
           onChange={(date: Date) => {
