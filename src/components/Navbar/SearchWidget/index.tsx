@@ -4,7 +4,7 @@ import ButtonsWithTabs from "../../TabsTest/ButtonsWithTabs";
 
 export default function SearchWidget() {
   const SearchWidget = styled.div`
-    height: 200px;
+    height: 500px;
     background-color: #073590;
     display: flex;
     flex-direction: column;
@@ -15,11 +15,6 @@ export default function SearchWidget() {
 
   return (
     <div>
-      {/* <SearchWidget>
-        <Buttons />
-        <RadiosContainer />
-        <SelectContainer />
-      </SearchWidget> */}
       <SearchWidget>
         <ButtonsWithTabs />
       </SearchWidget>

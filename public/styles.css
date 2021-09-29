@@ -42,3 +42,8 @@ span.material-icons {
 p {
     color: white;
 }
+
+.react-calendar {
+    width: 500px;
+    height: 47px;
+}
