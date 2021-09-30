@@ -1,4 +1,4 @@
-import React, { useState, useEffect, MouseEvent, ChangeEvent } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const SelectContent = styled.select`
@@ -17,6 +17,8 @@ const SelectWrapper = styled.div`
 interface selectInterface {
   setIataDeparture: React.Dispatch<React.SetStateAction<string>>;
   setIataArrival: React.Dispatch<React.SetStateAction<string>>;
+  setCityFrom: React.Dispatch<React.SetStateAction<string>>;
+  setCityTo: React.Dispatch<React.SetStateAction<string>>;
   iataArrival: string;
   iataDeparture: string;
 }
@@ -24,6 +26,8 @@ interface selectInterface {
 const SelectContainer: React.FC<selectInterface> = ({
   setIataDeparture,
   setIataArrival,
+  setCityFrom,
+  setCityTo,
   iataDeparture,
   iataArrival,
 }): JSX.Element => {
@@ -32,8 +36,13 @@ const SelectContainer: React.FC<selectInterface> = ({
       <SelectContent
         name="Da"
         id="from"
-        onChange={(e) => {
+        onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
           setIataDeparture(e.target.value);
+          let s =
+            e.currentTarget[(e.target as HTMLOptionsCollection).selectedIndex]!
+              .firstChild;
+          console.log(s?.textContent);
+          setCityFrom(s?.textContent!);
         }}
         value={iataDeparture}
       >
@@ -53,8 +62,13 @@ const SelectContainer: React.FC<selectInterface> = ({
         // defaultValue=""
         name="A"
         id="to"
-        onChange={(e) => {
+        onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
           setIataArrival(e.target.value);
+          let s =
+            e.currentTarget[(e.target as HTMLOptionsCollection).selectedIndex]!
+              .firstChild;
+          console.log(s?.textContent);
+          setCityTo(s?.textContent!);
         }}
         value={iataArrival}
       >

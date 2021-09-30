@@ -1,12 +1,16 @@
 import styled from "styled-components";
 import logo from "../../../assets/logo.png";
 
-const HeaderWrapper = styled.div`
+export interface headerProps {
+  backgroundColor: string;
+}
+
+export const HeaderWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: #073590;
+  background-color: ${(props: headerProps) => props.backgroundColor}; //#073590;
   color: white;
   height: 55px;
   z-index: 2;
@@ -45,16 +49,9 @@ const Vl = styled.div`
   background-color: white;
 `;
 
-export default function Header() {
-  // interface myButton {     //esempio di typescript
-  //   cazzo: string;
-  //   dio: string;
-  // }
-
-  // const Button: React.FC<myButton> = (props) => <button {...props} style={{color: props.cazzo}} children={props.children?.toString().toUpperCase()} />
-
+const Header: React.FC<headerProps> = ({ backgroundColor }): JSX.Element => {
   return (
-    <HeaderWrapper>
+    <HeaderWrapper backgroundColor={backgroundColor}>
       <Logo src={logo} />
       <Nav>
         <UnorderedList>
@@ -75,4 +72,14 @@ export default function Header() {
       {/* <div className="diocane">Cazzo</div> */}
     </HeaderWrapper>
   );
-}
+};
+
+// interface myButton {     //esempio di typescript
+//   cazzo: string;
+//   dio: string;
+// }
+
+// const Button: React.FC<myButton> = (props) => {
+//       <button {...props} style={{color: props.cazzo}} children={props.children?.toString().toUpperCase()} />}
+
+export default Header;

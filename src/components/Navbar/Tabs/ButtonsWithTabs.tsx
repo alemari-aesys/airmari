@@ -4,8 +4,9 @@ import "react-datepicker/dist/react-datepicker.css";
 import axios, { AxiosRequestConfig } from "axios";
 import { Tabs, TabList, Tab, TabPanel } from "react-tabs";
 import styled from "styled-components";
-import RadiosContainer from "../Navbar/SearchWidget/Radios/RadiosContainer";
-import SelectWrapper from "../Navbar/SearchWidget/SelectMenus/SelectContainer";
+import RadiosContainer from "../SearchWidget/Radios/RadiosContainer";
+import SelectWrapper from "../SearchWidget/SelectMenus/SelectContainer";
+import { format } from "date-fns";
 
 const Title = styled.div`
   display: inline-block;
@@ -36,13 +37,24 @@ const Button = styled.button`
 export default function ButtonsWithTabs() {
   const [iataDeparture, setIataDeparture] = useState<string>("");
   const [iataArrival, setIataArrival] = useState<string>("");
+  const [cityFrom, setCityFrom] = useState<string>("");
+  const [cityTo, setCityTo] = useState<string>("");
 
+  useEffect(() => {
+    if (cityFrom !== "" && cityTo !== "")
+      console.log("YEEEEEEEEEEEESSSSSSSSS!!!");
+  }, [cityFrom, cityTo]);
+  // const [day, setDay] = useState<string>("");
   const token = `Bearer jv9gf6r5qz6z3zxjvzddvcwr`;
   const [startDate, setStartDate] = useState(new Date());
+  // const [vanillaDate, setVanillaDate] = useState<string>("");
 
   const getData = (vanillaDate: string) => {
     console.log(iataDeparture);
     console.log(iataArrival);
+
+    console.log(vanillaDate);
+
     const config: AxiosRequestConfig = {
       headers: {
         Accept: "application/json",
@@ -59,21 +71,7 @@ export default function ButtonsWithTabs() {
   };
 
   function handleSearch() {
-    let day = startDate.getDate();
-    let month = startDate.getMonth() + 1;
-    let year = startDate.getFullYear();
-    let myDate = year + "-";
-    if (month < 10) {
-      myDate += "0" + month;
-    } else {
-      myDate += month;
-    }
-    myDate += "-";
-    if (day < 10) {
-      myDate += "0" + day;
-    } else {
-      myDate += day;
-    }
+    const myDate = format(startDate, "yyyy-MM-dd");
     getData(myDate);
   }
 
@@ -108,16 +106,19 @@ export default function ButtonsWithTabs() {
         <SelectWrapper
           setIataDeparture={setIataDeparture}
           setIataArrival={setIataArrival}
+          setCityFrom={setCityFrom}
+          setCityTo={setCityTo}
           iataDeparture={iataDeparture}
           iataArrival={iataArrival}
         />
-        <DatePicker
-          selected={startDate}
-          onChange={(date: Date) => {
-            setStartDate(date);
-          }}
-        />
-        <div style={{ color: "white" }}>MM/DD/YYYY</div>
+        {iataArrival && iataDeparture && (
+          <DatePicker
+            selected={startDate}
+            onChange={(date: Date) => {
+              setStartDate(date);
+            }}
+          />
+        )}
         <Button onClick={() => handleSearch()}>Cerca</Button>
       </TabPanel>
       <TabPanel>

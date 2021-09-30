@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import ButtonsWithTabs from "../../TabsTest/ButtonsWithTabs";
+import ButtonsWithTabs from "../Tabs/ButtonsWithTabs";
 
 const SearchWidgetWrapper = styled.div`
-  height: 500px;
+  height: 400px;
   background-color: #073590;
   display: flex;
   flex-direction: column;

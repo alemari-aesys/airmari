@@ -39,6 +39,10 @@ span.material-icons {
     color: white;
 }
 
+span.material-icons.containerIcon {
+    color: blue
+}
+
 p {
     color: white;
 }
@@ -46,4 +50,11 @@ p {
 .react-calendar {
     width: 500px;
     height: 47px;
+}
+
+.inside {
+    padding: 0 18% 0 18%;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
 }
