@@ -36,52 +36,33 @@ const Button = styled.button`
 export default function ButtonsWithTabs() {
   const [iataDeparture, setIataDeparture] = useState<string>("");
   const [iataArrival, setIataArrival] = useState<string>("");
-  // const [day, setDay] = useState<string>("");
-  const token = `Bearer kwsjyq6umv3nj3sa25etjn4e`;
+
+  const token = `Bearer jv9gf6r5qz6z3zxjvzddvcwr`;
   const [startDate, setStartDate] = useState(new Date());
-  const [vanillaDate, setVanillaDate] = useState<string>("");
 
-  const getData = () => {
-    if (iataDeparture !== "" || iataArrival !== "") {
-      const config: AxiosRequestConfig = {
-        headers: {
-          Accept: "application/json",
-          Authorization: token,
-        },
-      };
+  const getData = (vanillaDate: string) => {
+    console.log(iataDeparture);
+    console.log(iataArrival);
+    const config: AxiosRequestConfig = {
+      headers: {
+        Accept: "application/json",
+        Authorization: token,
+      },
+    };
 
-      axios
-        .get(
-          `https://api.lufthansa.com/v1/operations/schedules/${iataDeparture}/${iataArrival}/${vanillaDate}`,
-          config
-        )
-        .then((res: any) => console.log(res));
-    }
+    axios
+      .get(
+        `https://api.lufthansa.com/v1/operations/schedules/${iataDeparture}/${iataArrival}/${vanillaDate}`,
+        config
+      )
+      .then((res: any) => console.log(res));
   };
 
-  // useEffect(() => {
-  //   console.log(iataDeparture);
-  //   console.log(iataArrival);
-  // }, [iataDeparture, iataArrival]);
-
-  useEffect(() => {
-    console.log(vanillaDate);
-  }, [vanillaDate]);
-
-  async function handleSearch() {
-    let cityFrom = document.getElementById("from") as HTMLSelectElement;
-    let opt0 = cityFrom.options[cityFrom.selectedIndex];
-    setIataDeparture(opt0.value);
-    let cityTo = document.getElementById("to") as HTMLSelectElement;
-    let opt1 = cityFrom.options[cityTo.selectedIndex];
-    setIataArrival(opt1.value);
-    console.log(opt0);
-    console.log(opt1);
+  function handleSearch() {
     let day = startDate.getDate();
     let month = startDate.getMonth() + 1;
     let year = startDate.getFullYear();
     let myDate = year + "-";
-    // myDate += month < 10 ? "0" + month : month;
     if (month < 10) {
       myDate += "0" + month;
     } else {
@@ -93,9 +74,7 @@ export default function ButtonsWithTabs() {
     } else {
       myDate += day;
     }
-    console.log(myDate);
-    setVanillaDate(myDate);
-    getData();
+    getData(myDate);
   }
 
   return (
@@ -126,7 +105,12 @@ export default function ButtonsWithTabs() {
 
       <TabPanel>
         <RadiosContainer />
-        <SelectWrapper />
+        <SelectWrapper
+          setIataDeparture={setIataDeparture}
+          setIataArrival={setIataArrival}
+          iataDeparture={iataDeparture}
+          iataArrival={iataArrival}
+        />
         <DatePicker
           selected={startDate}
           onChange={(date: Date) => {

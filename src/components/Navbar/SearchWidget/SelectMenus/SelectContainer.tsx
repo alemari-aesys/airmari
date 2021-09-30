@@ -7,12 +7,6 @@ const SelectContent = styled.select`
   border-radius: 8px;
 `;
 
-// const SelectTo = styled.select`
-//   width: 400px;
-//   height: 3rem;
-//   border-radius: 0 8px 8px 0;
-// `;
-
 const SelectWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -20,20 +14,28 @@ const SelectWrapper = styled.div`
   width: 100%;
 `;
 
-export default function SelectContainer() {
-  const [cityFrom, setCityFrom] = useState("");
-  const [cityTo, setCityTo] = useState("");
+interface selectInterface {
+  setIataDeparture: React.Dispatch<React.SetStateAction<string>>;
+  setIataArrival: React.Dispatch<React.SetStateAction<string>>;
+  iataArrival: string;
+  iataDeparture: string;
+}
 
+const SelectContainer: React.FC<selectInterface> = ({
+  setIataDeparture,
+  setIataArrival,
+  iataDeparture,
+  iataArrival,
+}): JSX.Element => {
   return (
     <SelectWrapper>
       <SelectContent
-        // defaultValue=""
         name="Da"
         id="from"
         onChange={(e) => {
-          setCityFrom(e.target.value);
+          setIataDeparture(e.target.value);
         }}
-        value={cityFrom}
+        value={iataDeparture}
       >
         <option value="" disabled hidden>
           DA
@@ -52,9 +54,9 @@ export default function SelectContainer() {
         name="A"
         id="to"
         onChange={(e) => {
-          setCityTo(e.target.value);
+          setIataArrival(e.target.value);
         }}
-        value={cityTo}
+        value={iataArrival}
       >
         <option value="" disabled hidden>
           A
@@ -70,4 +72,6 @@ export default function SelectContainer() {
       </SelectContent>
     </SelectWrapper>
   );
-}
+};
+
+export default SelectContainer;
