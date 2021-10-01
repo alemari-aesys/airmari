@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, createContext } from "react";
+import { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios, { AxiosRequestConfig } from "axios";
@@ -7,6 +7,9 @@ import styled from "styled-components";
 import RadiosContainer from "../SearchWidget/Radios/RadiosContainer";
 import SelectWrapper from "../SearchWidget/SelectMenus/SelectContainer";
 import { format } from "date-fns";
+import { context } from "../../../App";
+import { useContext } from "react";
+import { dataInt } from "../../../App";
 
 const Title = styled.div`
   display: inline-block;
@@ -39,15 +42,16 @@ export default function ButtonsWithTabs() {
   const [iataArrival, setIataArrival] = useState<string>("");
   const [cityFrom, setCityFrom] = useState<string>("");
   const [cityTo, setCityTo] = useState<string>("");
+  const { cities, setCities } = useContext(context);
 
   useEffect(() => {
-    if (cityFrom !== "" && cityTo !== "")
+    if (cityFrom !== "" && cityTo !== "") {
       console.log("YEEEEEEEEEEEESSSSSSSSS!!!");
+    }
   }, [cityFrom, cityTo]);
-  // const [day, setDay] = useState<string>("");
+
   const token = `Bearer jv9gf6r5qz6z3zxjvzddvcwr`;
   const [startDate, setStartDate] = useState(new Date());
-  // const [vanillaDate, setVanillaDate] = useState<string>("");
 
   const getData = (vanillaDate: string) => {
     console.log(iataDeparture);
@@ -73,6 +77,7 @@ export default function ButtonsWithTabs() {
   function handleSearch() {
     const myDate = format(startDate, "yyyy-MM-dd");
     getData(myDate);
+    setCities([]);
   }
 
   return (

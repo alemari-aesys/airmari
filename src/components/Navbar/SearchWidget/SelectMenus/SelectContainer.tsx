@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { context } from "../../../../App";
+import { useContext } from "react";
 
 const SelectContent = styled.select`
   width: 400px;
@@ -13,7 +15,6 @@ const SelectWrapper = styled.div`
   flex-direction: row;
   width: 100%;
 `;
-
 interface selectInterface {
   setIataDeparture: React.Dispatch<React.SetStateAction<string>>;
   setIataArrival: React.Dispatch<React.SetStateAction<string>>;
