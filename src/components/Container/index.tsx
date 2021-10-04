@@ -19,26 +19,30 @@ export default function Container() {
   const { cities, departureDate } = useContext(context);
 
   return (
-    <HeaderContainer backgroundColor={"white"}>
-      <div className="inside">
-        {/* Torino<span className="material-icons containerIcon">swap_horiz</span>
-        Londra */}
-        {cities?.firstCity && cities.firstCity}
-        {cities?.secondCity && (
-          <span className="material-icons containerIcon">swap_horiz</span>
-        )}
-        {cities?.secondCity && cities.secondCity}
-        <div
-          style={{
-            textAlign: "left",
-            color: "grey",
-            fontSize: "0.8rem",
-            fontWeight: "normal",
-          }}
-        >
-          {departureDate && `Andata: ${departureDate}`}
-        </div>
-      </div>
-    </HeaderContainer>
+    <div>
+      {cities && departureDate && (
+        <HeaderContainer backgroundColor={"white"}>
+          <div className="inside">
+            {/* Torino<span className="material-icons containerIcon">swap_horiz</span>
+          Londra */}
+            {cities?.firstCity && cities.firstCity}
+            {cities?.secondCity && (
+              <span className="material-icons containerIcon">swap_horiz</span>
+            )}
+            {cities?.secondCity && cities.secondCity}
+            <div
+              style={{
+                textAlign: "left",
+                color: "grey",
+                fontSize: "0.8rem",
+                fontWeight: "normal",
+              }}
+            >
+              {departureDate && `Andata: ${departureDate}`}
+            </div>
+          </div>
+        </HeaderContainer>
+      )}
+    </div>
   );
 }
