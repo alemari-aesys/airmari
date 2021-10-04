@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { headerProps } from "../Navbar/Header";
+import { context } from "../../App";
+import { useContext } from "react";
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -14,11 +16,18 @@ const HeaderContainer = styled.div`
 `;
 
 export default function Container() {
+  const { cities, departureDate } = useContext(context);
+
   return (
     <HeaderContainer backgroundColor={"white"}>
       <div className="inside">
-        Torino<span className="material-icons containerIcon">swap_horiz</span>
-        Londra
+        {/* Torino<span className="material-icons containerIcon">swap_horiz</span>
+        Londra */}
+        {cities?.firstCity && cities.firstCity}
+        {cities?.secondCity && (
+          <span className="material-icons containerIcon">swap_horiz</span>
+        )}
+        {cities?.secondCity && cities.secondCity}
         <div
           style={{
             textAlign: "left",
@@ -27,7 +36,7 @@ export default function Container() {
             fontWeight: "normal",
           }}
         >
-          Andata : 12 ott
+          {departureDate && `Andata: ${departureDate}`}
         </div>
       </div>
     </HeaderContainer>

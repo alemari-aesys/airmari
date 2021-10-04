@@ -9,7 +9,6 @@ import SelectWrapper from "../SearchWidget/SelectMenus/SelectContainer";
 import { format } from "date-fns";
 import { context } from "../../../App";
 import { useContext } from "react";
-import { dataInt } from "../../../App";
 
 const Title = styled.div`
   display: inline-block;
@@ -42,7 +41,8 @@ export default function ButtonsWithTabs() {
   const [iataArrival, setIataArrival] = useState<string>("");
   const [cityFrom, setCityFrom] = useState<string>("");
   const [cityTo, setCityTo] = useState<string>("");
-  const { cities, setCities } = useContext(context);
+
+  const { setCities, setDepartureDate } = useContext(context);
 
   useEffect(() => {
     if (cityFrom !== "" && cityTo !== "") {
@@ -50,15 +50,10 @@ export default function ButtonsWithTabs() {
     }
   }, [cityFrom, cityTo]);
 
-  const token = `Bearer jv9gf6r5qz6z3zxjvzddvcwr`;
+  const token = process.env.REACT_APP_AUTHORIZATION;
   const [startDate, setStartDate] = useState(new Date());
 
   const getData = (vanillaDate: string) => {
-    console.log(iataDeparture);
-    console.log(iataArrival);
-
-    console.log(vanillaDate);
-
     const config: AxiosRequestConfig = {
       headers: {
         Accept: "application/json",
@@ -76,8 +71,9 @@ export default function ButtonsWithTabs() {
 
   function handleSearch() {
     const myDate = format(startDate, "yyyy-MM-dd");
+    setCities({ firstCity: cityFrom, secondCity: cityTo });
+    setDepartureDate(myDate);
     getData(myDate);
-    setCities([]);
   }
 
   return (
