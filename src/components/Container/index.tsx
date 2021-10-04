@@ -3,6 +3,8 @@ import { headerProps } from "../Navbar/Header";
 import { context } from "../../App";
 import { useContext } from "react";
 import { format } from "date-fns";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -24,6 +26,7 @@ const FlightsContainer = styled.div`
   align-items: flex-start;
   background-color: ${(props: headerProps) => props.backgroundColor}; //#073590;
   color: blue;
+  padding-bottom: 20px;
 `;
 
 const FirstLine = styled.div`
@@ -45,14 +48,26 @@ const SecondLine = styled.div`
   margin-top: 20px;
   cursor: pointer;
   box-shadow: 1px 1px 10px grey;
+  border-bottom: 5px solid orange;
 `;
 
 export default function Container() {
-  const { cities, departureDate } = useContext(context);
+  const { cities, departureDate, loading } = useContext(context);
 
   return (
     <div>
-      {cities && departureDate && (
+      {loading && (
+        <div style={{ marginLeft: "45%" }}>
+          <Loader
+            type="Puff"
+            color="#00BFFF"
+            height={100}
+            width={100}
+            timeout={3000} //3 secs
+          />
+        </div>
+      )}
+      {!loading && cities && departureDate && (
         <HeaderContainer backgroundColor={"white"}>
           <div className="inside">
             {cities?.firstCity && cities.firstCity}
@@ -73,7 +88,7 @@ export default function Container() {
           </div>
         </HeaderContainer>
       )}
-      {cities && departureDate && (
+      {!loading && cities && departureDate && (
         <FlightsContainer backgroundColor="white">
           <FirstLine className="insideFlights">
             <span

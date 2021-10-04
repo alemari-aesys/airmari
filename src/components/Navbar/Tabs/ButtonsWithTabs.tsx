@@ -41,14 +41,24 @@ export default function ButtonsWithTabs() {
   const [iataArrival, setIataArrival] = useState<string>("");
   const [cityFrom, setCityFrom] = useState<string>("");
   const [cityTo, setCityTo] = useState<string>("");
-
-  const { setCities, setDepartureDate } = useContext(context);
+  const [flightSchedules, setFlightSchedules] = useState<Object>();
+  const [theDate, setTheDate] = useState<string>("");
+  const { setCities, setDepartureDate, setLoading } = useContext(context);
 
   useEffect(() => {
     if (cityFrom !== "" && cityTo !== "") {
       console.log("YEEEEEEEEEEEESSSSSSSSS!!!");
     }
   }, [cityFrom, cityTo]);
+
+  useEffect(() => {
+    console.log(flightSchedules);
+    if (flightSchedules) {
+      setCities({ firstCity: cityFrom, secondCity: cityTo });
+      setDepartureDate(theDate);
+      setLoading(false);
+    }
+  }, [flightSchedules]);
 
   const token = process.env.REACT_APP_AUTHORIZATION;
   const [startDate, setStartDate] = useState(new Date());
@@ -61,19 +71,24 @@ export default function ButtonsWithTabs() {
       },
     };
 
-    axios
-      .get(
-        `https://api.lufthansa.com/v1/operations/schedules/${iataDeparture}/${iataArrival}/${vanillaDate}`,
-        config
-      )
-      .then((res: any) => console.log(res));
+    try {
+      axios
+        .get(
+          `https://api.lufthansa.com/v1/operations/schedules/${iataDeparture}/${iataArrival}/${vanillaDate}`,
+          config
+        )
+        // .then((res: any) => console.log(res))
+        .then((res: Object) => setFlightSchedules(res));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  function handleSearch() {
+  async function handleSearch() {
     const myDate = format(startDate, "yyyy-MM-dd");
-    setCities({ firstCity: cityFrom, secondCity: cityTo });
-    setDepartureDate(myDate);
-    getData(myDate);
+    setTheDate(myDate);
+    setLoading(true);
+    await getData(myDate);
   }
 
   return (

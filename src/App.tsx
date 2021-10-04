@@ -4,9 +4,11 @@ import Container from "./components/Container";
 
 interface contextInt {
   cities: dataInt | undefined;
-  setCities: React.Dispatch<React.SetStateAction<dataInt[]>> | any;
+  setCities: React.Dispatch<React.SetStateAction<dataInt>>;
   departureDate: string;
-  setDepartureDate: React.Dispatch<React.SetStateAction<string>> | any;
+  setDepartureDate: React.Dispatch<React.SetStateAction<string>>;
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface dataInt {
@@ -16,9 +18,11 @@ export interface dataInt {
 
 export const context = createContext<contextInt>({
   cities: { firstCity: "", secondCity: "" },
-  setCities: undefined,
+  setCities: () => null,
   departureDate: "",
-  setDepartureDate: undefined,
+  setDepartureDate: () => null,
+  loading: false,
+  setLoading: () => null,
 });
 
 const App: React.FC = (): JSX.Element => {
@@ -26,12 +30,20 @@ const App: React.FC = (): JSX.Element => {
     firstCity: "",
     secondCity: "",
   });
+  const [loading, setLoading] = useState<boolean>(false);
   const [departureDate, setDepartureDate] = useState<string>("");
 
   return (
     <div>
       <context.Provider
-        value={{ cities, setCities, departureDate, setDepartureDate }}
+        value={{
+          cities,
+          setCities,
+          departureDate,
+          setDepartureDate,
+          loading,
+          setLoading,
+        }}
       >
         <Navbar />
         <Container />
