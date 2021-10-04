@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import axios, { AxiosRequestConfig } from "axios";
+import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { Tabs, TabList, Tab, TabPanel } from "react-tabs";
 import styled from "styled-components";
 import RadiosContainer from "../SearchWidget/Radios/RadiosContainer";
@@ -9,6 +9,7 @@ import SelectWrapper from "../SearchWidget/SelectMenus/SelectContainer";
 import { format } from "date-fns";
 import { context } from "../../../App";
 import { useContext } from "react";
+import { flightSchedulesInterface } from "../../../App";
 
 const Title = styled.div`
   display: inline-block;
@@ -81,8 +82,7 @@ export default function ButtonsWithTabs() {
           `https://api.lufthansa.com/v1/operations/schedules/${iataDeparture}/${iataArrival}/${vanillaDate}`,
           config
         )
-        // .then((res: any) => console.log(res))
-        .then((res: Object) => setFlightSchedules(res));
+        .then((res: flightSchedulesInterface) => setFlightSchedules(res));
     } catch (error) {
       console.log(error);
     }

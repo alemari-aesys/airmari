@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import { headerProps } from "../Navbar/Header";
-import { context } from "../../App";
-import { useContext } from "react";
+import { context, flightSchedulesInterface } from "../../App";
+import { useContext, useEffect } from "react";
 import { format } from "date-fns";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
+import { AxiosResponse } from "axios";
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -58,6 +59,16 @@ const SecondLine = styled.div`
 export default function Container() {
   const { cities, departureDate, loading, flightSchedules } =
     useContext(context);
+  // const mario:
+  //   | flightSchedulesInterface
+  //   | AxiosResponse<any>
+  //   | PromiseLike<void> = flightSchedules;
+
+  useEffect(() => {
+    // console.log(mario.data);
+
+    console.log(flightSchedules.data.ScheduleResource.Schedule[0].Flight);
+  }, [flightSchedules]);
 
   return (
     <div>

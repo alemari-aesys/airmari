@@ -9,8 +9,22 @@ interface contextInt {
   setDepartureDate: React.Dispatch<React.SetStateAction<string>>;
   loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
-  flightSchedules: Object;
-  setFlightSchedules: React.Dispatch<React.SetStateAction<Object>>;
+  flightSchedules: flightSchedulesInterface;
+  setFlightSchedules: React.Dispatch<
+    React.SetStateAction<flightSchedulesInterface>
+  >;
+}
+
+export interface flightSchedulesInterface {
+  data: {
+    ScheduleResource: {
+      Schedule: [
+        {
+          Flight: {};
+        }
+      ];
+    };
+  };
 }
 
 export interface dataInt {
@@ -25,7 +39,17 @@ export const context = createContext<contextInt>({
   setDepartureDate: () => null,
   loading: false,
   setLoading: () => null,
-  flightSchedules: [{}],
+  flightSchedules: {
+    data: {
+      ScheduleResource: {
+        Schedule: [
+          {
+            Flight: {},
+          },
+        ],
+      },
+    },
+  },
   setFlightSchedules: () => null,
 });
 
@@ -36,7 +60,18 @@ const App: React.FC = (): JSX.Element => {
   });
   const [loading, setLoading] = useState<boolean>(false);
   const [departureDate, setDepartureDate] = useState<string>("");
-  const [flightSchedules, setFlightSchedules] = useState<Object>({});
+  const [flightSchedules, setFlightSchedules] =
+    useState<flightSchedulesInterface>({
+      data: {
+        ScheduleResource: {
+          Schedule: [
+            {
+              Flight: {},
+            },
+          ],
+        },
+      },
+    });
 
   return (
     <div>
