@@ -116,7 +116,16 @@ export default function Container() {
                 {format(new Date(departureDate), "ccc")}
               </span>
               <span style={{ marginTop: "30px", fontSize: "2rem" }}>
-                {Math.floor(Math.random() * 100)} €
+                {Math.floor(Math.random() * 100)} € <br />
+              </span>
+              <span
+                style={{
+                  fontWeight: "normal",
+                  fontSize: "0.7rem",
+                  color: "grey",
+                }}
+              >
+                (I prezzi sono fittizi)
               </span>
             </div>
           </SecondLine>
