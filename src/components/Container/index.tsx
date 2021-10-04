@@ -5,7 +5,6 @@ import { useContext, useEffect } from "react";
 import { format } from "date-fns";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
-import { AxiosResponse } from "axios";
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -16,7 +15,7 @@ const HeaderContainer = styled.div`
   color: blue;
   height: 55px;
   border: 1px solid grey;
-  box-shadow: 2px 2px grey;
+  box-shadow: 3px 3px 3px grey;
 `;
 
 const FlightsContainer = styled.div`
@@ -65,9 +64,7 @@ export default function Container() {
   //   | PromiseLike<void> = flightSchedules;
 
   useEffect(() => {
-    // console.log(mario.data);
-
-    console.log(flightSchedules.data.ScheduleResource.Schedule[0].Flight);
+    console.log(flightSchedules.data.ScheduleResource.Schedule);
   }, [flightSchedules]);
 
   return (
@@ -126,6 +123,22 @@ export default function Container() {
               </span>
             </div>
           </SecondLine>
+          {flightSchedules &&
+            flightSchedules.data.ScheduleResource.Schedule.map((x) => (
+              <>
+                {x.Flight.map((y) => (
+                  <>
+                    <h1>{y.Departure.AirportCode}</h1>
+                    <h1>{y.Departure.ScheduledTimeLocal.DateTime}</h1>
+                    <h1>{y.Arrival.AirportCode}</h1>
+                    <h1>{y.Arrival.ScheduledTimeLocal.DateTime}</h1>
+                  </>
+                ))}
+                <p style={{ color: "black" }}>
+                  -------------------------------
+                </p>
+              </>
+            ))}
         </FlightsContainer>
       )}
     </div>

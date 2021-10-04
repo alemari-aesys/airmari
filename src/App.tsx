@@ -20,9 +20,24 @@ export interface flightSchedulesInterface {
     ScheduleResource: {
       Schedule: [
         {
-          Flight: {};
+          Flight: FlightType[];
         }
       ];
+    };
+  };
+}
+
+interface FlightType {
+  Departure: {
+    AirportCode: string;
+    ScheduledTimeLocal: {
+      DateTime: string;
+    };
+  };
+  Arrival: {
+    AirportCode: string;
+    ScheduledTimeLocal: {
+      DateTime: string;
     };
   };
 }
@@ -44,7 +59,7 @@ export const context = createContext<contextInt>({
       ScheduleResource: {
         Schedule: [
           {
-            Flight: {},
+            Flight: [],
           },
         ],
       },
@@ -66,7 +81,7 @@ const App: React.FC = (): JSX.Element => {
         ScheduleResource: {
           Schedule: [
             {
-              Flight: {},
+              Flight: [],
             },
           ],
         },
