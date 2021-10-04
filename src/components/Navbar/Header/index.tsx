@@ -41,6 +41,9 @@ const UnorderedList = styled.ul`
 const ListItem = styled.li`
   margin: 0 20px;
   cursor: pointer;
+  /* &:hover {
+    text-decoration: underline;
+  } */
 `;
 
 const Vl = styled.div`
