@@ -32,6 +32,10 @@ const FlightsContainer = styled.div`
 const FirstLine = styled.div`
   display: flex;
   align-items: center;
+  padding: 0 18% 0 18%;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
 `;
 
 const SecondLine = styled.div`
@@ -52,12 +56,13 @@ const SecondLine = styled.div`
 `;
 
 export default function Container() {
-  const { cities, departureDate, loading } = useContext(context);
+  const { cities, departureDate, loading, flightSchedules } =
+    useContext(context);
 
   return (
     <div>
       {loading && (
-        <div style={{ marginLeft: "45%" }}>
+        <div style={{ marginLeft: "47%" }}>
           <Loader
             type="Puff"
             color="#00BFFF"
@@ -90,7 +95,7 @@ export default function Container() {
       )}
       {!loading && cities && departureDate && (
         <FlightsContainer backgroundColor="white">
-          <FirstLine className="insideFlights">
+          <FirstLine>
             <span
               style={{ marginRight: "5px" }}
               className="material-icons containerIcon"

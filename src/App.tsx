@@ -9,6 +9,8 @@ interface contextInt {
   setDepartureDate: React.Dispatch<React.SetStateAction<string>>;
   loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  flightSchedules: Object;
+  setFlightSchedules: React.Dispatch<React.SetStateAction<Object>>;
 }
 
 export interface dataInt {
@@ -23,6 +25,8 @@ export const context = createContext<contextInt>({
   setDepartureDate: () => null,
   loading: false,
   setLoading: () => null,
+  flightSchedules: [{}],
+  setFlightSchedules: () => null,
 });
 
 const App: React.FC = (): JSX.Element => {
@@ -32,6 +36,7 @@ const App: React.FC = (): JSX.Element => {
   });
   const [loading, setLoading] = useState<boolean>(false);
   const [departureDate, setDepartureDate] = useState<string>("");
+  const [flightSchedules, setFlightSchedules] = useState<Object>({});
 
   return (
     <div>
@@ -43,6 +48,8 @@ const App: React.FC = (): JSX.Element => {
           setDepartureDate,
           loading,
           setLoading,
+          flightSchedules,
+          setFlightSchedules,
         }}
       >
         <Navbar />

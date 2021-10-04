@@ -41,9 +41,14 @@ export default function ButtonsWithTabs() {
   const [iataArrival, setIataArrival] = useState<string>("");
   const [cityFrom, setCityFrom] = useState<string>("");
   const [cityTo, setCityTo] = useState<string>("");
-  const [flightSchedules, setFlightSchedules] = useState<Object>();
   const [theDate, setTheDate] = useState<string>("");
-  const { setCities, setDepartureDate, setLoading } = useContext(context);
+  const {
+    setCities,
+    setDepartureDate,
+    setLoading,
+    flightSchedules,
+    setFlightSchedules,
+  } = useContext(context);
 
   useEffect(() => {
     if (cityFrom !== "" && cityTo !== "") {
@@ -52,7 +57,6 @@ export default function ButtonsWithTabs() {
   }, [cityFrom, cityTo]);
 
   useEffect(() => {
-    console.log(flightSchedules);
     if (flightSchedules) {
       setCities({ firstCity: cityFrom, secondCity: cityTo });
       setDepartureDate(theDate);
