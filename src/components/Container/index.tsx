@@ -85,9 +85,15 @@ export default function Container() {
             {cities.firstCity} a {cities.secondCity}
           </FirstLine>
           <SecondLine>
-            {format(new Date(departureDate), "PP")}
-            <br />
-            {format(new Date(departureDate), "ccc")}
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <span>{format(new Date(departureDate), "PP")}</span>
+              <span style={{ fontWeight: "normal", color: "grey" }}>
+                {format(new Date(departureDate), "ccc")}
+              </span>
+              <span style={{ marginTop: "30px", fontSize: "2rem" }}>
+                {Math.floor(Math.random() * 100)} €
+              </span>
+            </div>
           </SecondLine>
         </FlightsContainer>
       )}
