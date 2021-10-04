@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import { Tabs, TabList, Tab, TabPanel } from "react-tabs";
 import styled from "styled-components";
 import RadiosContainer from "../SearchWidget/Radios/RadiosContainer";
@@ -9,7 +9,7 @@ import SelectWrapper from "../SearchWidget/SelectMenus/SelectContainer";
 import { format } from "date-fns";
 import { context } from "../../../App";
 import { useContext } from "react";
-import { flightSchedulesInterface } from "../../../App";
+import { flightSchedulesInterface } from "../../../interfaces/interface";
 
 const Title = styled.div`
   display: inline-block;

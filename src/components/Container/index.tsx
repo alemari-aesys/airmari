@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import { headerProps } from "../Navbar/Header";
-import { context, flightSchedulesInterface } from "../../App";
+import { context } from "../../App";
 import { useContext, useEffect } from "react";
 import { format } from "date-fns";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
+import { FlightType } from "../../interfaces/interface";
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -58,10 +59,6 @@ const SecondLine = styled.div`
 export default function Container() {
   const { cities, departureDate, loading, flightSchedules } =
     useContext(context);
-  // const mario:
-  //   | flightSchedulesInterface
-  //   | AxiosResponse<any>
-  //   | PromiseLike<void> = flightSchedules;
 
   useEffect(() => {
     console.log(flightSchedules.data.ScheduleResource.Schedule);
@@ -126,17 +123,35 @@ export default function Container() {
           {flightSchedules &&
             flightSchedules.data.ScheduleResource.Schedule.map((x) => (
               <>
-                {x.Flight.map((y) => (
+                {(x.Flight as FlightType[]).length > 1 ? (
+                  (x.Flight as FlightType[]).map((y) => (
+                    <>
+                      <h1>{y.Departure.AirportCode}</h1>
+                      <h1>{y.Departure.ScheduledTimeLocal.DateTime}</h1>
+                      <h1>{y.Arrival.AirportCode}</h1>
+                      <h1>{y.Arrival.ScheduledTimeLocal.DateTime}</h1>
+                    </>
+                  ))
+                ) : (
                   <>
-                    <h1>{y.Departure.AirportCode}</h1>
-                    <h1>{y.Departure.ScheduledTimeLocal.DateTime}</h1>
-                    <h1>{y.Arrival.AirportCode}</h1>
-                    <h1>{y.Arrival.ScheduledTimeLocal.DateTime}</h1>
+                    <h1>{(x.Flight as FlightType).Departure.AirportCode}</h1>
+                    <h1>{(x.Flight as FlightType).Departure.AirportCode}</h1>
+                    <h1>
+                      {
+                        (x.Flight as FlightType).Departure.ScheduledTimeLocal
+                          .DateTime
+                      }
+                    </h1>
+                    <h1>{(x.Flight as FlightType).Arrival.AirportCode}</h1>
+                    <h1>
+                      {
+                        (x.Flight as FlightType).Arrival.ScheduledTimeLocal
+                          .DateTime
+                      }
+                    </h1>
                   </>
-                ))}
-                <p style={{ color: "black" }}>
-                  -------------------------------
-                </p>
+                )}
+                <p style={{ color: "blue" }}>-------------------------------</p>
               </>
             ))}
         </FlightsContainer>

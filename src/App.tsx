@@ -1,51 +1,12 @@
 import React, { createContext, useState } from "react";
 import Navbar from "./components/Navbar";
 import Container from "./components/Container";
-
-interface contextInt {
-  cities: dataInt | undefined;
-  setCities: React.Dispatch<React.SetStateAction<dataInt>>;
-  departureDate: string;
-  setDepartureDate: React.Dispatch<React.SetStateAction<string>>;
-  loading: boolean;
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
-  flightSchedules: flightSchedulesInterface;
-  setFlightSchedules: React.Dispatch<
-    React.SetStateAction<flightSchedulesInterface>
-  >;
-}
-
-export interface flightSchedulesInterface {
-  data: {
-    ScheduleResource: {
-      Schedule: [
-        {
-          Flight: FlightType[];
-        }
-      ];
-    };
-  };
-}
-
-interface FlightType {
-  Departure: {
-    AirportCode: string;
-    ScheduledTimeLocal: {
-      DateTime: string;
-    };
-  };
-  Arrival: {
-    AirportCode: string;
-    ScheduledTimeLocal: {
-      DateTime: string;
-    };
-  };
-}
-
-export interface dataInt {
-  firstCity: string;
-  secondCity: string;
-}
+import {
+  contextInt,
+  flightSchedulesInterface,
+  FlightType,
+  dataInt,
+} from "./interfaces/interface";
 
 export const context = createContext<contextInt>({
   cities: { firstCity: "", secondCity: "" },
