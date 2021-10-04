@@ -50,8 +50,8 @@ const SelectContainer: React.FC<selectInterface> = ({
         <option value="" disabled hidden>
           DA
         </option>
-        <option value="FCO">Roma Fiumicino</option>
-        <option value="MXP">Milano Malpensa</option>
+        <option value="FCO">Roma</option>
+        <option value="MXP">Milano</option>
         <option value="FLR">Firenze</option>
         <option value="BLQ">Bologna</option>
         <option value="EWR">New York</option>
