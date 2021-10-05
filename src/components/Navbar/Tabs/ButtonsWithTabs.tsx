@@ -143,17 +143,35 @@ export default function ButtonsWithTabs() {
       </TabPanel>
       <TabPanel>
         <div
-          style={{ width: "910px", height: "94px", marginTop: "30px" }}
+          style={{
+            width: "800px",
+            maxWidth: "800px",
+            height: "145px",
+            marginTop: "30px",
+            minHeight: "145px",
+          }}
         ></div>
       </TabPanel>
       <TabPanel>
         <div
-          style={{ width: "910px", height: "94px", marginTop: "30px" }}
+          style={{
+            width: "800px",
+            maxWidth: "800px",
+            height: "145px",
+            marginTop: "30px",
+            minHeight: "145px",
+          }}
         ></div>
       </TabPanel>
       <TabPanel>
         <div
-          style={{ width: "910px", height: "94px", marginTop: "30px" }}
+          style={{
+            width: "800px",
+            maxWidth: "800px",
+            height: "145px",
+            marginTop: "30px",
+            minHeight: "145px",
+          }}
         ></div>
       </TabPanel>
     </Tabs>

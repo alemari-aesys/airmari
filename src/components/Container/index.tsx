@@ -8,7 +8,6 @@ import FirstLine from "./FirstLine/index";
 import SecondLine from "./SecondLine/index";
 import HeaderContainer from "./HeaderContainer";
 import FlightResult from "./FlightResult";
-import Ticket from "./Ticket";
 
 const FlightsContainer = styled.div`
   margin-top: 10px;
