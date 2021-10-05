@@ -122,24 +122,35 @@ export default function ButtonsWithTabs() {
       </TabList>
 
       <TabPanel>
-        <RadiosContainer />
-        <SelectWrapper
-          setIataDeparture={setIataDeparture}
-          setIataArrival={setIataArrival}
-          setCityFrom={setCityFrom}
-          setCityTo={setCityTo}
-          iataDeparture={iataDeparture}
-          iataArrival={iataArrival}
-        />
-        {iataArrival && iataDeparture && (
-          <DatePicker
-            selected={startDate}
-            onChange={(date: Date) => {
-              setStartDate(date);
-            }}
+        <div
+          style={{
+            width: "800px",
+            maxWidth: "800px",
+            height: "145px",
+            marginTop: "30px",
+            minHeight: "145px",
+            color: "white",
+          }}
+        >
+          <RadiosContainer />
+          <SelectWrapper
+            setIataDeparture={setIataDeparture}
+            setIataArrival={setIataArrival}
+            setCityFrom={setCityFrom}
+            setCityTo={setCityTo}
+            iataDeparture={iataDeparture}
+            iataArrival={iataArrival}
           />
-        )}
-        <Button onClick={() => handleSearch()}>Cerca</Button>
+          {iataArrival && iataDeparture && (
+            <DatePicker
+              selected={startDate}
+              onChange={(date: Date) => {
+                setStartDate(date);
+              }}
+            />
+          )}
+          <Button onClick={() => handleSearch()}>Cerca</Button>
+        </div>
       </TabPanel>
       <TabPanel>
         <div
