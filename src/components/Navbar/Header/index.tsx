@@ -55,7 +55,12 @@ const Vl = styled.div`
 const Header: React.FC<headerProps> = ({ backgroundColor }): JSX.Element => {
   return (
     <HeaderWrapper backgroundColor={backgroundColor}>
-      <Logo src={logo} />
+      <Logo
+        src={logo}
+        onClick={() => {
+          window.location.pathname = "/";
+        }}
+      />
       <Nav>
         <UnorderedList>
           <ListItem>Pianifica</ListItem>
