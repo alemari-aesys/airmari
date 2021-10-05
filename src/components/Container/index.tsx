@@ -8,12 +8,13 @@ import FirstLine from "./FirstLine/index";
 import SecondLine from "./SecondLine/index";
 import HeaderContainer from "./HeaderContainer";
 import FlightResult from "./FlightResult";
+import Ticket from "./Ticket";
 
 const FlightsContainer = styled.div`
   margin-top: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-start;
   background-color: ${(props: headerProps) => props.backgroundColor}; //#073590;
   color: blue;
@@ -23,10 +24,6 @@ const FlightsContainer = styled.div`
 export default function Container() {
   const { cities, departureDate, loading, flightSchedules } =
     useContext(context);
-
-  useEffect(() => {
-    console.log(flightSchedules.data.ScheduleResource.Schedule);
-  }, [flightSchedules]);
 
   return (
     <div>
