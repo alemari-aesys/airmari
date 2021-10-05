@@ -149,8 +149,11 @@ export default function ButtonsWithTabs() {
             height: "145px",
             marginTop: "30px",
             minHeight: "145px",
+            color: "white",
           }}
-        ></div>
+        >
+          NON GUIDI
+        </div>
       </TabPanel>
       <TabPanel>
         <div
@@ -160,8 +163,11 @@ export default function ButtonsWithTabs() {
             height: "145px",
             marginTop: "30px",
             minHeight: "145px",
+            color: "white",
           }}
-        ></div>
+        >
+          NON DORMI
+        </div>
       </TabPanel>
       <TabPanel>
         <div
@@ -171,8 +177,11 @@ export default function ButtonsWithTabs() {
             height: "145px",
             marginTop: "30px",
             minHeight: "145px",
+            color: "white",
           }}
-        ></div>
+        >
+          NON FAI
+        </div>
       </TabPanel>
     </Tabs>
   );
