@@ -30,7 +30,7 @@ const SecondLine: React.FC<slInt> = ({ departureDate }) => {
           {format(new Date(departureDate), "ccc")}
         </span>
         <span style={{ marginTop: "30px", fontSize: "2rem" }}>
-          {Math.floor(Math.random() * 100)} € <br />
+          {Math.floor(Math.floor(Math.random() * 500))} € <br />
         </span>
         <span
           style={{

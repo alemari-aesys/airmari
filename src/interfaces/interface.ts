@@ -17,6 +17,9 @@ export interface contextInt {
         Schedule: [
           {
             Flight: FlightType[] | FlightType;
+            TotalJourney: {
+              Duration: string
+            }
           }
         ];
       };

@@ -21,6 +21,9 @@ export const context = createContext<contextInt>({
         Schedule: [
           {
             Flight: [],
+            TotalJourney: {
+              Duration: "",
+            },
           },
         ],
       },
@@ -43,6 +46,9 @@ const App: React.FC = (): JSX.Element => {
           Schedule: [
             {
               Flight: [],
+              TotalJourney: {
+                Duration: "",
+              },
             },
           ],
         },

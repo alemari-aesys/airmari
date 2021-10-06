@@ -9,6 +9,7 @@ interface ticketInt {
   dateTimeDep: string;
   airportCodeArr: string;
   dateTimeArr: string;
+  duration: string;
 }
 
 const TicketStyled = styled.div`
@@ -33,9 +34,11 @@ const Ticket: React.FC<ticketInt> = ({
   dateTimeDep,
   airportCodeArr,
   dateTimeArr,
+  duration,
 }): JSX.Element => {
   const vanillaDepTime = dateTimeDep.substring(dateTimeDep.indexOf("T") + 1);
   const vanillaArrTime = dateTimeArr.substring(dateTimeArr.indexOf("T") + 1);
+  const howLong = duration.substring(duration.indexOf("T") + 1);
 
   return (
     <TicketStyled>
@@ -75,6 +78,17 @@ const Ticket: React.FC<ticketInt> = ({
         }}
       >
         {airportCodeArr}
+      </span>
+      <span
+        style={{
+          position: "absolute",
+          marginTop: "70px",
+          fontSize: "0.6rem",
+          color: "yellowgreen",
+          right: "39%",
+        }}
+      >
+        Durata: {howLong}
       </span>
     </TicketStyled>
   );

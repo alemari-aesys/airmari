@@ -34,8 +34,8 @@ const FlightResult: React.FC<frInt> = ({ flightSchedules }) => {
     <FlightResultStyled>
       {flightSchedules.data.ScheduleResource.Schedule.map((x) =>
         (x.Flight as FlightType[]).length > 1 ? (
-          (doSomething(x.Flight as FlightType[]),
-          (
+          <>
+            {doSomething(x.Flight as FlightType[])}
             <Ticket
               airportCodeDep={customDeparture.Departure.AirportCode}
               dateTimeDep={
@@ -43,20 +43,10 @@ const FlightResult: React.FC<frInt> = ({ flightSchedules }) => {
               }
               airportCodeArr={customArrival.Arrival.AirportCode}
               dateTimeArr={customArrival.Arrival.ScheduledTimeLocal.DateTime}
+              duration={x.TotalJourney.Duration}
             />
-          ))
+          </>
         ) : (
-          // .map((y, i) => {
-          //   return (
-          //     <Ticket
-          //       airportCodeDep={y.AirportCode}
-          //       dateTimeDep={y.ScheduledTimeLocal.DateTime}
-          //       airportCodeArr={y.AirportCode}
-          //       dateTimeArr={y.ScheduledTimeLocal.DateTime}
-          //       airportCodeDep={y.AirportCode}
-          //     />
-          //   );
-          // })
           <>
             <Ticket
               airportCodeDep={(x.Flight as FlightType).Departure.AirportCode}
@@ -67,6 +57,7 @@ const FlightResult: React.FC<frInt> = ({ flightSchedules }) => {
               dateTimeArr={
                 (x.Flight as FlightType).Arrival.ScheduledTimeLocal.DateTime
               }
+              duration={x.TotalJourney.Duration}
             />
           </>
         )
