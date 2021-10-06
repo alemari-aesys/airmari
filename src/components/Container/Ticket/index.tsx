@@ -18,7 +18,11 @@ const TicketContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: 6rem;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+  transition: all ease 0.2s;
+  &:hover {
+    transform: translate(0, -10px);
+  }
 `;
 
 const TicketStyled = styled.div`
