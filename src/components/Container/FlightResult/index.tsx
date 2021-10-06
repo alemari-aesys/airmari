@@ -44,6 +44,8 @@ const FlightResult: React.FC<frInt> = ({ flightSchedules }) => {
               airportCodeArr={customArrival.Arrival.AirportCode}
               dateTimeArr={customArrival.Arrival.ScheduledTimeLocal.DateTime}
               duration={x.TotalJourney.Duration}
+              stops={(x.Flight as FlightType[]).length}
+              price={Math.floor(Math.floor(Math.random() * 500))}
             />
           </>
         ) : (
@@ -58,6 +60,8 @@ const FlightResult: React.FC<frInt> = ({ flightSchedules }) => {
                 (x.Flight as FlightType).Arrival.ScheduledTimeLocal.DateTime
               }
               duration={x.TotalJourney.Duration}
+              stops={0}
+              price={Math.floor(Math.floor(Math.random() * 500))}
             />
           </>
         )

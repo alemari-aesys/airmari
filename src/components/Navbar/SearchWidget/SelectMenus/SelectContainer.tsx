@@ -7,6 +7,7 @@ const SelectContent = styled.select`
   width: 400px;
   height: 3rem;
   border-radius: 8px;
+  margin-bottom: 10px;
   &:hover {
     background: linear-gradient(45deg, white, lightblue);
     border: 1px solid black;

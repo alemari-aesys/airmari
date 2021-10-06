@@ -25,10 +25,12 @@ const Button = styled.button`
   background-color: greenyellow;
   border-radius: 8px;
   font-weight: bold;
-  width: 282px;
+  /* width: 282px; */
+  width: 800px;
   height: 52px;
   border: 0px;
   cursor: pointer;
+  /* margin-left: 32%; */
   &:hover {
     background-color: rgba(0, 256, 0);
   }
@@ -50,12 +52,6 @@ export default function ButtonsWithTabs() {
     flightSchedules,
     setFlightSchedules,
   } = useContext(context);
-
-  useEffect(() => {
-    if (cityFrom !== "" && cityTo !== "") {
-      console.log("YEEEEEEEEEEEESSSSSSSSS!!!");
-    }
-  }, [cityFrom, cityTo]);
 
   useEffect(() => {
     if (flightSchedules) {
@@ -143,6 +139,7 @@ export default function ButtonsWithTabs() {
           />
           {iataArrival && iataDeparture && (
             <DatePicker
+              className="pickThis"
               selected={startDate}
               onChange={(date: Date) => {
                 setStartDate(date);

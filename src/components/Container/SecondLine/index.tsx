@@ -16,6 +16,7 @@ const SecondLineStyled = styled.div`
   padding: 30px;
   border-radius: 5px;
   margin-top: 20px;
+  margin-bottom: 20px;
   cursor: pointer;
   box-shadow: 1px 1px 10px grey;
   border-bottom: 5px solid orange;
@@ -39,7 +40,7 @@ const SecondLine: React.FC<slInt> = ({ departureDate }) => {
             color: "grey",
           }}
         >
-          (Il prezzo è fittizio)
+          (I prezzi sono fittizi)
         </span>
       </div>
     </SecondLineStyled>
