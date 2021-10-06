@@ -5,7 +5,7 @@ import SearchWidget from "./SearchWidget";
 const Navbar: React.FC = () => {
   return (
     <div>
-      <Header />
+      <Header backgroundColor={"#073590"} />
       <SearchWidget />
     </div>
   );

@@ -1,32 +1,32 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
+const RadiosContainerWrapper = styled.div`
+  display: flex;
+  color: white;
+  margin: 30px 40px;
+`;
+
+const MyRadio = styled.input`
+  width: 1rem;
+  height: 1rem;
+  margin: 0 15px;
+`;
+
+const Title = styled.div`
+  display: inline-block;
+  white-space: nowrap;
+  margin-right: 15px;
+  font-size: 13px;
+  cursor: pointer;
+`;
+
+const Promo = styled(Title)`
+  cursor: pointer;
+`;
+
 export default function RadiosContainer() {
   const [travelType, setTravelType] = useState<string>("");
-
-  const RadiosContainer = styled.div`
-    display: flex;
-    color: white;
-    margin: 30px 40px;
-  `;
-
-  const MyRadio = styled.input`
-    width: 1rem;
-    height: 1rem;
-    margin: 0 15px;
-  `;
-
-  const Title = styled.div`
-    display: inline-block;
-    white-space: nowrap;
-    margin-right: 15px;
-    font-size: 13px;
-    cursor: pointer;
-  `;
-
-  const Promo = styled(Title)`
-    cursor: pointer;
-  `;
 
   const handleChangeEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
     const v = e.target.value;
@@ -34,7 +34,7 @@ export default function RadiosContainer() {
   };
 
   return (
-    <RadiosContainer>
+    <RadiosContainerWrapper>
       <MyRadio
         type="radio"
         name="oneortwo"
@@ -74,6 +74,6 @@ export default function RadiosContainer() {
         verified_user
       </span>
       <Promo>Applica codice di promozione</Promo>
-    </RadiosContainer>
+    </RadiosContainerWrapper>
   );
 }

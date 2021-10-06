@@ -1,125 +1,97 @@
-import axios, { AxiosRequestConfig } from "axios";
-import { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import { env } from "process";
+import { context } from "../../../../App";
+import { useContext } from "react";
 
-export default function SelectContainer() {
-  const [iataDeparture, setIataDeparture] = useState<string>("");
-  const [iataArrival, setIataArrival] = useState<string>("");
-  const token = `Bearer kwsjyq6umv3nj3sa25etjn4e`;
-
-  const SelectFrom = styled.select`
-    width: 400px;
-    height: 3rem;
-    border-radius: 8px 0 0 8px;
-  `;
-
-  const SelectTo = styled.select`
-    width: 400px;
-    height: 3rem;
-    border-radius: 0 8px 8px 0;
-  `;
-
-  const SelectContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    width: 100%;
-  `;
-
-  const Button = styled.button`
-    margin-left: 10px;
-    background-color: greenyellow;
-    border-radius: 8px;
-    font-weight: bold;
-    width: 100px;
-    border: 0px;
-    cursor: pointer;
-    &:hover {
-      background-color: rgba(0, 256, 0);
-    }
-    &:active {
-      background-color: rgba(0, 256, 0, 0.7);
-    }
-  `;
-
-  useEffect(() => {
-    const d = new Date(2021, 9, 29);
-
-    if (iataDeparture !== "" || iataArrival !== "") {
-      let month = d.getMonth();
-
-      let myDate = d.getFullYear().toString() + "-";
-
-      if (d.getMonth() + 1 < 10) {
-        myDate += "0" + month;
-      } else {
-        myDate += month + 1;
-      }
-      myDate += "-";
-      myDate += d.getDate().toString();
-
-      const config: AxiosRequestConfig = {
-        headers: {
-          Accept: "application/json",
-          Authorization: token,
-          "X-Originating-IP": "37.159.185.154",
-        },
-      };
-
-      axios
-        .get(
-          `https://api.lufthansa.com/v1/operations/schedules/${iataDeparture}/${iataArrival}/${myDate}?directFlights=0`,
-          config
-        )
-        .then((res: any) => console.log(res));
-    }
-  }, [iataDeparture, iataArrival]);
-
-  function handleSearch() {
-    let cityFrom = document.getElementById("from") as HTMLSelectElement;
-    let opt0 = cityFrom.options[cityFrom.selectedIndex];
-    setIataDeparture(opt0.value);
-    let cityTo = document.getElementById("to") as HTMLSelectElement;
-    let opt1 = cityFrom.options[cityTo.selectedIndex];
-    setIataArrival(opt1.value);
+const SelectContent = styled.select`
+  width: 400px;
+  height: 3rem;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  &:hover {
+    background: linear-gradient(45deg, white, lightblue);
+    border: 1px solid black;
   }
+`;
 
+const SelectWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+`;
+interface selectInterface {
+  setIataDeparture: React.Dispatch<React.SetStateAction<string>>;
+  setIataArrival: React.Dispatch<React.SetStateAction<string>>;
+  setCityFrom: React.Dispatch<React.SetStateAction<string>>;
+  setCityTo: React.Dispatch<React.SetStateAction<string>>;
+  iataArrival: string;
+  iataDeparture: string;
+}
+
+const SelectContainer: React.FC<selectInterface> = ({
+  setIataDeparture,
+  setIataArrival,
+  setCityFrom,
+  setCityTo,
+  iataDeparture,
+  iataArrival,
+}): JSX.Element => {
   return (
-    <SelectContainer>
-      <SelectFrom name="Da" id="from">
-        <option value="" disabled selected hidden>
+    <SelectWrapper>
+      <SelectContent
+        name="Da"
+        id="from"
+        onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
+          setIataDeparture(e.target.value);
+          let s =
+            e.currentTarget[(e.target as HTMLOptionsCollection).selectedIndex]!
+              .firstChild;
+          console.log(s?.textContent);
+          setCityFrom(s?.textContent!);
+        }}
+        value={iataDeparture}
+      >
+        <option value="" disabled hidden>
           DA
         </option>
-        <option value="FCO">Roma Fiumicino</option>
-        <option value="MXP">Milano Malpensa</option>
+        <option value="FCO">Roma</option>
+        <option value="MXP">Milano</option>
         <option value="FLR">Firenze</option>
         <option value="BLQ">Bologna</option>
         <option value="EWR">New York</option>
         <option value="VKO">Mosca</option>
         <option value="STN">Londra</option>
         <option value="PAR">Parigi</option>
-      </SelectFrom>
-      <SelectTo name="A" id="to">
-        <option value="" disabled selected hidden>
+      </SelectContent>
+      <SelectContent
+        // defaultValue=""
+        name="A"
+        id="to"
+        onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
+          setIataArrival(e.target.value);
+          let s =
+            e.currentTarget[(e.target as HTMLOptionsCollection).selectedIndex]!
+              .firstChild;
+          console.log(s?.textContent);
+          setCityTo(s?.textContent!);
+        }}
+        value={iataArrival}
+      >
+        <option value="" disabled hidden>
           A
         </option>
-        <option value="FCO">Roma Fiumicino</option>
-        <option value="MXP">Milano Malpensa</option>
+        <option value="FCO">Roma</option>
+        <option value="MXP">Milano</option>
         <option value="FLR">Firenze</option>
         <option value="BLQ">Bologna</option>
         <option value="EWR">New York</option>
         <option value="VKO">Mosca</option>
         <option value="STN">Londra</option>
         <option value="PAR">Parigi</option>
-      </SelectTo>
-      <Button
-        onClick={() => {
-          handleSearch();
-        }}
-      >
-        Cerca
-      </Button>
-    </SelectContainer>
+      </SelectContent>
+    </SelectWrapper>
   );
-}
+};
+
+export default SelectContainer;
