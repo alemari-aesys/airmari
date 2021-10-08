@@ -25,12 +25,10 @@ const Button = styled.button`
   background-color: greenyellow;
   border-radius: 8px;
   font-weight: bold;
-  /* width: 282px; */
-  width: 800px;
+  width: 282px;
   height: 52px;
   border: 0px;
   cursor: pointer;
-  /* margin-left: 32%; */
   &:hover {
     background-color: rgba(0, 256, 0);
   }
@@ -54,6 +52,12 @@ export default function ButtonsWithTabs() {
   } = useContext(context);
 
   useEffect(() => {
+    if (cityFrom !== "" && cityTo !== "") {
+      console.log("YEEEEEEEEEEEESSSSSSSSS!!!");
+    }
+  }, [cityFrom, cityTo]);
+
+  useEffect(() => {
     if (flightSchedules) {
       setCities({ firstCity: cityFrom, secondCity: cityTo });
       setDepartureDate(theDate);
@@ -63,11 +67,6 @@ export default function ButtonsWithTabs() {
 
   const token = process.env.REACT_APP_AUTHORIZATION;
   const [startDate, setStartDate] = useState(new Date());
-  const configRefresh: AxiosRequestConfig = {
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-  };
 
   const getData = (vanillaDate: string) => {
     const config: AxiosRequestConfig = {
@@ -144,7 +143,6 @@ export default function ButtonsWithTabs() {
           />
           {iataArrival && iataDeparture && (
             <DatePicker
-              className="pickThis"
               selected={startDate}
               onChange={(date: Date) => {
                 setStartDate(date);
@@ -157,7 +155,6 @@ export default function ButtonsWithTabs() {
       <TabPanel>
         <div
           style={{
-            position: "relative",
             width: "800px",
             maxWidth: "800px",
             height: "145px",
@@ -166,26 +163,7 @@ export default function ButtonsWithTabs() {
             color: "white",
           }}
         >
-          <div>NON GUIDI</div>
-          <div style={{ position: "absolute", bottom: "-10px", left: "80%" }}>
-            <button
-              onClick={() => {
-                axios
-                  .post(
-                    "https://api.lufthansa.com/v1/partners/oauth/token",
-                    {
-                      client_id: "nhjh7r7gw8fncbywee2zsf7a",
-                      client_secret: "zC2zz7VGnrusvRFPZYNB",
-                      grant_type: "client_credentials",
-                    },
-                    configRefresh
-                  )
-                  .then((res) => console.log(res));
-              }}
-            >
-              Ottieni un nuovo token
-            </button>
-          </div>
+          NON GUIDI
         </div>
       </TabPanel>
       <TabPanel>
