@@ -63,6 +63,7 @@ const SelectContainer: React.FC<selectInterface> = ({
         <option value="VKO">Mosca</option>
         <option value="STN">Londra</option>
         <option value="PAR">Parigi</option>
+        <option value="AMS">Amsterdam</option>
       </SelectContent>
       <SelectContent
         // defaultValue=""
@@ -89,6 +90,7 @@ const SelectContainer: React.FC<selectInterface> = ({
         <option value="VKO">Mosca</option>
         <option value="STN">Londra</option>
         <option value="PAR">Parigi</option>
+        <option value="AMS">Amsterdam</option>
       </SelectContent>
     </SelectWrapper>
   );

@@ -32,40 +32,41 @@ const FlightResult: React.FC<frInt> = ({ flightSchedules }) => {
 
   return (
     <FlightResultStyled>
-      {flightSchedules.data.ScheduleResource.Schedule.map((x) =>
-        (x.Flight as FlightType[]).length > 1 ? (
-          <>
-            {doSomething(x.Flight as FlightType[])}
-            <Ticket
-              airportCodeDep={customDeparture.Departure.AirportCode}
-              dateTimeDep={
-                customDeparture.Departure.ScheduledTimeLocal.DateTime
-              }
-              airportCodeArr={customArrival.Arrival.AirportCode}
-              dateTimeArr={customArrival.Arrival.ScheduledTimeLocal.DateTime}
-              duration={x.TotalJourney.Duration}
-              stops={(x.Flight as FlightType[]).length}
-              price={Math.floor(Math.floor(Math.random() * 500))}
-            />
-          </>
-        ) : (
-          <>
-            <Ticket
-              airportCodeDep={(x.Flight as FlightType).Departure.AirportCode}
-              dateTimeDep={
-                (x.Flight as FlightType).Departure.ScheduledTimeLocal.DateTime
-              }
-              airportCodeArr={(x.Flight as FlightType).Arrival.AirportCode}
-              dateTimeArr={
-                (x.Flight as FlightType).Arrival.ScheduledTimeLocal.DateTime
-              }
-              duration={x.TotalJourney.Duration}
-              stops={0}
-              price={Math.floor(Math.floor(Math.random() * 500))}
-            />
-          </>
-        )
-      )}
+      {flightSchedules &&
+        flightSchedules.data.ScheduleResource.Schedule.map((x) =>
+          (x.Flight as FlightType[]).length > 1 ? (
+            <>
+              {doSomething(x.Flight as FlightType[])}
+              <Ticket
+                airportCodeDep={customDeparture.Departure.AirportCode}
+                dateTimeDep={
+                  customDeparture.Departure.ScheduledTimeLocal.DateTime
+                }
+                airportCodeArr={customArrival.Arrival.AirportCode}
+                dateTimeArr={customArrival.Arrival.ScheduledTimeLocal.DateTime}
+                duration={x.TotalJourney.Duration}
+                stops={(x.Flight as FlightType[]).length}
+                price={Math.floor(Math.floor(Math.random() * 500))}
+              />
+            </>
+          ) : (
+            <>
+              <Ticket
+                airportCodeDep={(x.Flight as FlightType).Departure.AirportCode}
+                dateTimeDep={
+                  (x.Flight as FlightType).Departure.ScheduledTimeLocal.DateTime
+                }
+                airportCodeArr={(x.Flight as FlightType).Arrival.AirportCode}
+                dateTimeArr={
+                  (x.Flight as FlightType).Arrival.ScheduledTimeLocal.DateTime
+                }
+                duration={x.TotalJourney.Duration}
+                stops={0}
+                price={Math.floor(Math.floor(Math.random() * 500))}
+              />
+            </>
+          )
+        )}
     </FlightResultStyled>
   );
 };
