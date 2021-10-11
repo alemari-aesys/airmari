@@ -4,7 +4,6 @@ import Container from "./components/Container";
 import {
   contextInt,
   flightSchedulesInterface,
-  FlightType,
   dataInt,
 } from "./interfaces/interface";
 

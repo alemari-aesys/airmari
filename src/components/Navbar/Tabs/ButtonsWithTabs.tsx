@@ -168,7 +168,7 @@ export default function ButtonsWithTabs() {
         >
           <div>NON GUIDI</div>
           <div style={{ position: "absolute", bottom: "-10px", left: "80%" }}>
-            <button
+            {/* <button
               onClick={() => {
                 axios
                   .post(
@@ -184,7 +184,7 @@ export default function ButtonsWithTabs() {
               }}
             >
               Ottieni un nuovo token
-            </button>
+            </button> */}
           </div>
         </div>
       </TabPanel>
