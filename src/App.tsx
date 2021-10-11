@@ -1,6 +1,9 @@
 import React, { createContext, useState } from "react";
 import Navbar from "./components/Navbar";
 import Container from "./components/Container";
+import { Provider } from "react-redux";
+import { store } from "./state/store";
+
 import {
   contextInt,
   flightSchedulesInterface,

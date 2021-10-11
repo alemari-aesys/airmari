@@ -10,7 +10,7 @@ export interface flightState {
 export interface dataInterface {
     cityFrom: string,
     cityTo: string,
-    departureDate: Date | null,
+    // departureDate: Date | null,
     flightSchedules: flightSchedulesInterface
 }
 

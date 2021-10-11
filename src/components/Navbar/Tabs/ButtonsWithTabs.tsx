@@ -63,11 +63,11 @@ export default function ButtonsWithTabs() {
 
   const token = process.env.REACT_APP_AUTHORIZATION;
   const [startDate, setStartDate] = useState(new Date());
-  const configRefresh: AxiosRequestConfig = {
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-  };
+  // const configRefresh: AxiosRequestConfig = {
+  //   headers: {
+  //     "Content-Type": "application/x-www-form-urlencoded",
+  //   },
+  // };
 
   const getData = (vanillaDate: string) => {
     const config: AxiosRequestConfig = {

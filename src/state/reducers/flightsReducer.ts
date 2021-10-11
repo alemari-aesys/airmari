@@ -1,7 +1,6 @@
 import { flightSchedulesInterface } from "../../interfaces/interface";
 import { Action } from "../actions";
 import { flightState } from "../actions";
-import { FlightType } from "../../interfaces/interface";
 import { ActionTypes } from "../action-types";
 
 
@@ -11,7 +10,7 @@ const initialState: flightState = {
     data: {
         cityFrom: "",
         cityTo: "",
-        departureDate: new Date(),
+        // departureDate: new Date(),
         flightSchedules: {
             data: {
                 ScheduleResource: {
@@ -29,7 +28,7 @@ const initialState: flightState = {
     }
 }
 
-const flightsReducer = (state: flightState = initialState, action: Action): flightState => {
+export const flightsReducer = (state: flightState = initialState, action: Action): flightState => {
     switch (action.type) {
         case ActionTypes.SEARCH_FLIGHTS:
             return {
