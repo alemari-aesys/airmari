@@ -39,12 +39,14 @@ export const flightsReducer = (state: flightState = initialState, action: Action
             }
         case ActionTypes.SEARCH_FLIGHTS_SUCCESS: 
             return {
+                departureDate: state.departureDate,
                 data: action.payload,
                 loading: false,
                 error: null
             }
         case ActionTypes.SEARCH_FLIGHTS_ERROR:
             return {
+                departureDate: "",
                 data: null,
                 loading: false,
                 error: action.payload.toString()

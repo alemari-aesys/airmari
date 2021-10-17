@@ -1,13 +1,21 @@
 import styled from "styled-components";
 import { headerProps } from "../Navbar/Header";
-import { context } from "../../App";
-import { useContext, useEffect } from "react";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 import FirstLine from "./FirstLine/index";
 import SecondLine from "./SecondLine/index";
 import HeaderContainer from "./HeaderContainer";
 import FlightResult from "./FlightResult";
+import { store } from "../../state/store";
+import { useSelector } from "react-redux";
+import { RootState } from "../../state/reducers";
+import { useEffect } from "react";
+
+
+interface citiesInt {
+  firstCity: string, 
+  secondCity: string
+}
 
 const FlightsContainer = styled.div`
   margin-top: 10px;
@@ -21,11 +29,19 @@ const FlightsContainer = styled.div`
 `;
 
 export default function Container() {
-  const { cities, departureDate, loading, flightSchedules } =
-    useContext(context);
+  const state = useSelector((state: RootState) => state.flights)
+  // const { cities, departureDate, loading, flightSchedules } =
+  //   useContext(context);
+
+  const { loading } = state;
+  const cities: citiesInt = { firstCity: state.data!.cityFrom, secondCity: state.data!.cityTo }
+  const { departureDate } = state;
+  const flightSchedules = state.data!.flightSchedules
 
   useEffect(() => {
     console.log(flightSchedules);
+    console.log(state);
+    
   }, [flightSchedules]);
 
   return (

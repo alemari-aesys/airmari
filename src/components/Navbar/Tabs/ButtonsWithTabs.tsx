@@ -45,23 +45,24 @@ export default function ButtonsWithTabs() {
   const [cityFrom, setCityFrom] = useState<string>("");
   const [cityTo, setCityTo] = useState<string>("");
   const [theDate, setTheDate] = useState<string>("");
-  // const {
-  //   setCities,
-  //   setDepartureDate,
-  //   setLoading,
-  //   flightSchedules,
-  //   setFlightSchedules,
-  // } = useContext(context);
+  const [flightSchedules, setFlightSchedules] = useState<flightSchedulesInterface>();
+  const [loading, setLoading] = useState<boolean>(false);
 
   const state = useSelector((state: RootState) => state.flights)
   useEffect(() => {
-    if (state.data?.flightSchedules) {
-      state.data.cityFrom = cityFrom;
-      state.data.cityTo = cityTo;
+    if (flightSchedules) {
+      state.data!.cityFrom = cityFrom;
+      state.data!.cityTo = cityTo;
       state.departureDate = theDate;
       state.loading = false;
     }
-  }, [state.data!.flightSchedules]);
+  }, [flightSchedules]);
+
+  useEffect(() => {
+    state.loading = true;
+    console.log(state);
+    
+  }, [loading])
 
   const token = process.env.REACT_APP_AUTHORIZATION;
   const [startDate, setStartDate] = useState(new Date());
@@ -141,6 +142,8 @@ export default function ButtonsWithTabs() {
             setIataArrival={setIataArrival}
             setCityFrom={setCityFrom}
             setCityTo={setCityTo}
+            cityFrom={cityFrom}
+            cityTo={cityTo}
             iataDeparture={iataDeparture}
             iataArrival={iataArrival}
           />

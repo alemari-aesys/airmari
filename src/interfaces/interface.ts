@@ -1,15 +1,15 @@
-export interface contextInt {
-    cities: dataInt | undefined;
-    setCities: React.Dispatch<React.SetStateAction<dataInt>>;
-    departureDate: string;
-    setDepartureDate: React.Dispatch<React.SetStateAction<string>>;
-    loading: boolean;
-    setLoading: React.Dispatch<React.SetStateAction<boolean>>;
-    flightSchedules: flightSchedulesInterface;
-    setFlightSchedules: React.Dispatch<
-      React.SetStateAction<flightSchedulesInterface>
-    >;
-  }
+// export interface contextInt {
+//     cities: dataInt | undefined;
+//     setCities: React.Dispatch<React.SetStateAction<dataInt>>;
+//     departureDate: string;
+//     setDepartureDate: React.Dispatch<React.SetStateAction<string>>;
+//     loading: boolean;
+//     setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+//     flightSchedules: flightSchedulesInterface;
+//     setFlightSchedules: React.Dispatch<
+//       React.SetStateAction<flightSchedulesInterface>
+//     >;
+//   }
   
   export interface flightSchedulesInterface {
     data: {

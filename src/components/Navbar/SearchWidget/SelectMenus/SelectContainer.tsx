@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import { context } from "../../../../App";
-import { useContext } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../../state/reducers";
+import { Dispatch } from "react";
 
 const SelectContent = styled.select`
   width: 400px;
@@ -21,12 +22,14 @@ const SelectWrapper = styled.div`
   width: 100%;
 `;
 interface selectInterface {
-  setIataDeparture: React.Dispatch<React.SetStateAction<string>>;
-  setIataArrival: React.Dispatch<React.SetStateAction<string>>;
-  setCityFrom: React.Dispatch<React.SetStateAction<string>>;
-  setCityTo: React.Dispatch<React.SetStateAction<string>>;
-  iataArrival: string;
-  iataDeparture: string;
+  setIataDeparture: React.Dispatch<React.SetStateAction<string>>,
+  setIataArrival: React.Dispatch<React.SetStateAction<string>>,
+  setCityFrom: React.Dispatch<React.SetStateAction<string>>,
+  setCityTo: React.Dispatch<React.SetStateAction<string>>,
+  cityFrom: string,
+  cityTo: string,
+  iataArrival: string,
+  iataDeparture: string
 }
 
 const SelectContainer: React.FC<selectInterface> = ({
@@ -34,9 +37,21 @@ const SelectContainer: React.FC<selectInterface> = ({
   setIataArrival,
   setCityFrom,
   setCityTo,
+  cityFrom,
+  cityTo,
   iataDeparture,
   iataArrival,
 }): JSX.Element => {
+  
+  const state = useSelector((state: RootState) => state.flights)
+
+  useEffect(() => {
+    state.data!.cityFrom = cityFrom;
+    state.data!.cityTo = cityTo;
+    
+    
+  }, [cityFrom, cityTo])
+
   return (
     <SelectWrapper>
       <SelectContent
