@@ -51,6 +51,8 @@ const PriceStyled = styled.div`
   height: 6rem;
   color: blue;
   border: 1px solid grey;
+  border-right: 0px;
+  border-left: 0px;
   margin-top: 43px;
   margin-bottom: 2px;
   margin-left: -1px;

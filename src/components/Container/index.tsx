@@ -24,6 +24,10 @@ export default function Container() {
   const { cities, departureDate, loading, flightSchedules } =
     useContext(context);
 
+  useEffect(() => {
+    console.log(flightSchedules);
+  }, [flightSchedules]);
+
   return (
     <div>
       {loading && (

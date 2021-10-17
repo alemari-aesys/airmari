@@ -63,11 +63,11 @@ export default function ButtonsWithTabs() {
 
   const token = process.env.REACT_APP_AUTHORIZATION;
   const [startDate, setStartDate] = useState(new Date());
-  const configRefresh: AxiosRequestConfig = {
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-  };
+  // const configRefresh: AxiosRequestConfig = {
+  //   headers: {
+  //     "Content-Type": "application/x-www-form-urlencoded",
+  //   },
+  // };
 
   const getData = (vanillaDate: string) => {
     const config: AxiosRequestConfig = {
@@ -168,7 +168,7 @@ export default function ButtonsWithTabs() {
         >
           <div>NON GUIDI</div>
           <div style={{ position: "absolute", bottom: "-10px", left: "80%" }}>
-            <button
+            {/* <button
               onClick={() => {
                 axios
                   .post(
@@ -184,7 +184,7 @@ export default function ButtonsWithTabs() {
               }}
             >
               Ottieni un nuovo token
-            </button>
+            </button> */}
           </div>
         </div>
       </TabPanel>
