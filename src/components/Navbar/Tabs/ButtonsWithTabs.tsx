@@ -7,9 +7,9 @@ import styled from "styled-components";
 import RadiosContainer from "../SearchWidget/Radios/RadiosContainer";
 import SelectWrapper from "../SearchWidget/SelectMenus/SelectContainer";
 import { format } from "date-fns";
-import { context } from "../../../App";
-import { useContext } from "react";
 import { flightSchedulesInterface } from "../../../interfaces/interface";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../state/reducers";
 
 const Title = styled.div`
   display: inline-block;
@@ -45,21 +45,23 @@ export default function ButtonsWithTabs() {
   const [cityFrom, setCityFrom] = useState<string>("");
   const [cityTo, setCityTo] = useState<string>("");
   const [theDate, setTheDate] = useState<string>("");
-  const {
-    setCities,
-    setDepartureDate,
-    setLoading,
-    flightSchedules,
-    setFlightSchedules,
-  } = useContext(context);
+  // const {
+  //   setCities,
+  //   setDepartureDate,
+  //   setLoading,
+  //   flightSchedules,
+  //   setFlightSchedules,
+  // } = useContext(context);
 
+  const state = useSelector((state: RootState) => state.flights)
   useEffect(() => {
-    if (flightSchedules) {
-      setCities({ firstCity: cityFrom, secondCity: cityTo });
-      setDepartureDate(theDate);
-      setLoading(false);
+    if (state.data?.flightSchedules) {
+      state.data.cityFrom = cityFrom;
+      state.data.cityTo = cityTo;
+      state.departureDate = theDate;
+      state.loading = false;
     }
-  }, [flightSchedules]);
+  }, [state.data!.flightSchedules]);
 
   const token = process.env.REACT_APP_AUTHORIZATION;
   const [startDate, setStartDate] = useState(new Date());

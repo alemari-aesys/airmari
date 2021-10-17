@@ -5,12 +5,12 @@ import { ActionTypes } from "../action-types";
 
 
 const initialState: flightState = {
+    departureDate: "",
     loading: false,
     error: null,
     data: {
         cityFrom: "",
         cityTo: "",
-        // departureDate: new Date(),
         flightSchedules: {
             data: {
                 ScheduleResource: {
@@ -32,6 +32,7 @@ export const flightsReducer = (state: flightState = initialState, action: Action
     switch (action.type) {
         case ActionTypes.SEARCH_FLIGHTS:
             return {
+                departureDate: "",
                 data: initialState.data,
                 loading: false,
                 error: null
