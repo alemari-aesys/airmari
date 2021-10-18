@@ -7,7 +7,7 @@
     /* font-weight: bold; */
 }
 
-/* @media all and (max-width: 900px) {
+/* @media all and (max-width: 900px) {  //'media' stands for the devices, 'all' stands for the types u're targetting
     .diocane {
         background-color: red;
     }
